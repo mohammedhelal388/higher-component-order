@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import ReactDOM from 'react-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const branch=(props)=>{
+  return(
+   <div>
+      {props.title}
+   </div>
+  )
+  }
+const department=(props)=>{
+return(
+ <div>
+    {props.name}
+ </div>
+)}
+
+const withhead =Rapedcomponent=>(props)=>{
+return(
+  <div>
+    
+      <h2>{props.children}</h2>
+      <Rapedcomponent {...props} />
     </div>
-  );
+)
 }
 
-export default App;
+const HeadingDepartment = withhead(department);
+const Second=withhead(branch)
+
+const App= ()=>{
+  return(
+    <div>
+    <HeadingDepartment name='engneer'>departent</HeadingDepartment>
+    <Second title='helow'>branch</Second>
+    </div>
+  )
+}
+
+ReactDOM.render(<App/>,document.getElementById('root'))
+
+export default App
